@@ -6,8 +6,9 @@ import org.bukkit.craftbukkit.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.getspout.spout.SpoutNetServerHandler;
 
-public class NoClipNetServerHandler extends NetServerHandler {
+public class NoClipSpoutNetServerHandler extends SpoutNetServerHandler {
 
     private MinecraftServer minecraftServer;
     private double x;
@@ -15,7 +16,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
     private double z;
     private boolean checkMovement = true;
 
-    public NoClipNetServerHandler(MinecraftServer minecraftserver, NetworkManager networkmanager, EntityPlayer entityplayer) {
+    public NoClipSpoutNetServerHandler(MinecraftServer minecraftserver, NetworkManager networkmanager, EntityPlayer entityplayer) {
         super(minecraftserver, networkmanager, entityplayer);
         this.minecraftServer = minecraftserver;
         this.server = minecraftserver.server;

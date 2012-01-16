@@ -1,16 +1,17 @@
 name: NoClip
-version: 1.0
+version: 1.1
 description: The one and only official Bukkit plugin to allow the use of Zombe's NoClip mod
 author: md_5
 
 main: com.md_5.noclip.NoClip
+softdepend: [Spout]
 
 commands:
   noclip:
     description: Internal Zombe's NoClip enable / disable command
     permission: noclip
-    
+
 permissions:
-    noclip:
-        description: Allow the use of Zombe's NoClip mod
-        default: op
+  noclip:
+    description: Allow the use of Zombe's NoClip mod
+    default: op

@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerListener;
 public class NoClipPlayerListener extends PlayerListener {
 
     public NoClipPlayerListener() {
-        Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, this, Priority.Low, NoClip.instance);
+        Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, this, Priority.Normal, NoClip.instance);
     }
 
     @Override
