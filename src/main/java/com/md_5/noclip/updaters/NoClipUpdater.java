@@ -1,4 +1,4 @@
-package com.md_5.noclip;
+package com.md_5.noclip.updaters;
 
 import net.minecraft.server.EntityPlayer;
 

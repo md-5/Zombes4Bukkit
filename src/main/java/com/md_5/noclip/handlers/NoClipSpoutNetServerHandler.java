@@ -1,4 +1,4 @@
-package com.md_5.noclip;
+package com.md_5.noclip.handlers;
 
 import net.minecraft.server.*;
 import org.bukkit.Location;

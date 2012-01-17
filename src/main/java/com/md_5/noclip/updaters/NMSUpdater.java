@@ -1,20 +1,21 @@
-package com.md_5.noclip;
+package com.md_5.noclip.updaters;
 
+import com.md_5.noclip.handlers.NoClipNetServerHandler;
 import net.minecraft.server.EntityPlayer;
 import net.minecraft.server.NetServerHandler;
 
 public class NMSUpdater implements NoClipUpdater {
 
-    public void updateNetServerHandler(EntityPlayer player) {
+    public void updateNetServerHandler(final EntityPlayer player) {
         player.netServerHandler.disconnected = true;
-        NetServerHandler handler = new NoClipNetServerHandler(player.server, player.netServerHandler.networkManager, player);
+        final NetServerHandler handler = new NoClipNetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
         player.server.networkListenThread.a(handler);
     }
 
-    public void resetNetServerHandler(EntityPlayer player) {
+    public void resetNetServerHandler(final EntityPlayer player) {
         player.netServerHandler.disconnected = true;
-        NetServerHandler handler = new NetServerHandler(player.server, player.netServerHandler.networkManager, player);
+        final NetServerHandler handler = new NetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
         player.server.networkListenThread.a(handler);
     }
