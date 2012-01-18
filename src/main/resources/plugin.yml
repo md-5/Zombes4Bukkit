@@ -3,7 +3,7 @@ version: 1.2
 description: The one and only official Bukkit plugin to allow the use of Zombe's NoClip mod
 author: md_5
 
-main: com.md_5.noclip.NoClip
+main: com.md_5.zmod.Plugin
 softdepend: [Spout]
 
 commands:

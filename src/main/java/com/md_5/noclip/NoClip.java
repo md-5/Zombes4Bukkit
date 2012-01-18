@@ -6,34 +6,29 @@ import com.md_5.noclip.listeners.NoClipPlayerListener;
 import com.md_5.noclip.updaters.NMSUpdater;
 import com.md_5.noclip.updaters.NoClipUpdater;
 import com.md_5.noclip.updaters.SpoutUpdater;
-import java.util.logging.Logger;
+import com.md_5.zmod.BaseMod;
+import com.md_5.zmod.Plugin;
 import net.minecraft.server.EntityPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class NoClip extends JavaPlugin {
+public class NoClip extends BaseMod {
 
-    public static NoClip instance;
-    public static Logger logger;
-    private static NoClipUpdater updater;
+    public NoClipUpdater updater;
 
-    public NoClip() {
-        instance = this;
-    }
-
-    public void onEnable() {
-        logger = getLogger();
-        updater = (getServer().getPluginManager().isPluginEnabled("Spout")) ? new SpoutUpdater() : new NMSUpdater();
+    @Override
+    public void enable() {
+        updater = (Plugin.instance.getServer().getPluginManager().isPluginEnabled("Spout")) ? new SpoutUpdater() : new NMSUpdater();
         new Config();
         new NoClipEntityListener();
         new NoClipPlayerListener();
         logger.info("Zombe's NoClip for Bukkit by md_5 enabled");
     }
 
-    public void onDisable() {
+    @Override
+    public void disable() {
         logger.info("Zombe's NoClip for Bukkit by md_5 disabled");
     }
 
@@ -63,5 +58,15 @@ public class NoClip extends JavaPlugin {
         if (Config.MESSAGES) {
             player.getPlayer().sendMessage(ChatColor.GREEN + "NoClip successfully disabled");
         }
+    }
+
+    @Override
+    public void init() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
