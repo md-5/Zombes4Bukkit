@@ -1,8 +1,8 @@
 package com.md_5.noclip.listeners;
 
 import com.md_5.noclip.NoClip;
-import com.md_5.noclip.config.Config;
-import com.md_5.noclip.config.Variables;
+import com.md_5.noclip.Config;
+import com.md_5.noclip.Variables;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -11,9 +11,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class NoClipPlayerListener implements Listener {
+public class PlayerListener implements Listener {
 
-    public NoClipPlayerListener() {
+    public PlayerListener() {
         Bukkit.getServer().getPluginManager().registerEvents(this, NoClip.instance);
     }
 

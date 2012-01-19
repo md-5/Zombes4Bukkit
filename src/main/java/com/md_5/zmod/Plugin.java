@@ -21,6 +21,8 @@ public class Plugin extends JavaPlugin {
     }
 
     public void onEnable() {
+        getConfig().options().copyDefaults(true);
+        saveConfig();
         mods.add(new Growth());
         mods.add(new NoClip());
         for (BaseMod mod : mods) {

@@ -10,15 +10,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
-public class NoClipEntityListener implements Listener {
+public class EntityListener implements Listener {
 
-    public NoClipEntityListener() {
+    public EntityListener() {
         Bukkit.getServer().getPluginManager().registerEvents(this, NoClip.instance);
     }
 
     @EventHandler(event = EntityDamageEvent.class, priority = EventPriority.NORMAL)
     public void onEntityDamage(final EntityDamageEvent event) {
-
         final Entity entity = event.getEntity();
         if (entity.getLastDamageCause().getCause() == DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().bQ) {
             event.setCancelled(true);

@@ -2,20 +2,22 @@ package com.md_5.growth;
 
 import java.util.HashSet;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 
-public class Handler implements Runnable {
+public class Rooter implements Runnable {
 
     final static int rootSpace = 3;
     final static float growthSqrRadius = (0.5f + rootSpace) * (0.5f + rootSpace);
     public final static HashSet<Item> toHandle = new HashSet<Item>();
 
     public void run() {
-        HashSet<Item> toRemove = new HashSet<Item>();
-        for (Item i : toHandle) {
+        final HashSet<Item> toRemove = new HashSet<Item>();
+        for (final Item i : toHandle) {
+            System.out.println(i.getTicksLived());
             if (i.getTicksLived() > Growth.rootTime * 20) {
                 handle(i);
                 toRemove.add(i);
@@ -31,9 +33,6 @@ public class Handler implements Runnable {
         final int x = location.getBlockX();
         final int y = location.getBlockY();
         final int z = location.getBlockZ();
-        if (y < 0 || block.getTypeId() != 0) {
-            return;
-        }
         if (block.getLightLevel() < 8) {
             return;
         }
@@ -42,28 +41,28 @@ public class Handler implements Runnable {
             return;
         }
         final int blockBelow = world.getBlockTypeIdAt(x, y - 1, z);
-        if (itemStack.getTypeId() == 295) {
-            if (blockBelow == 60) {
-                block.setTypeId(59);
+        if (itemStack.getTypeId() == Material.SEEDS.getId()) {
+            if (blockBelow == Material.SOIL.getId()) {
+                block.setTypeId(Material.CROPS.getId());
                 item.remove();
             }
         }
-        if (itemStack.getTypeId() == 6) {
-            if (blockBelow == 2 || blockBelow == 3) {
+        if (itemStack.getTypeId() == Material.SAPLING.getId()) {
+            if (blockBelow == Material.DIRT.getId() || blockBelow == Material.GRASS.getId()) {
                 for (int x2 = -rootSpace; x2 <= rootSpace; x2++) {
                     for (int z2 = -rootSpace; z2 <= rootSpace; z2++) {
                         if (x2 * x2 + z2 * z2 > growthSqrRadius) {
-                            return;
+                            continue;
                         }
                         for (int y2 = -rootSpace; y2 <= rootSpace; y2++) {
                             final int adjacentBlock = world.getBlockTypeIdAt(x + x2, y + y2, z + z2);
-                            if (adjacentBlock == 17 || adjacentBlock == 6) {
+                            if (adjacentBlock == Material.LEAVES.getId() || adjacentBlock == Material.LOG.getId()) {
                                 return;
                             }
                         }
                     }
                 }
-                block.setTypeIdAndData(6, (byte) itemStack.getDurability(), true);
+                block.setTypeIdAndData(Material.SAPLING.getId(), (byte) itemStack.getDurability(), true);
                 item.remove();
             }
         }

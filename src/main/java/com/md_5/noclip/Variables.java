@@ -1,4 +1,4 @@
-package com.md_5.noclip.config;
+package com.md_5.noclip;
 
 public class Variables {
 

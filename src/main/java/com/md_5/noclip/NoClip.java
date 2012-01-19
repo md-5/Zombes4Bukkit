@@ -1,13 +1,11 @@
 package com.md_5.noclip;
 
-import com.md_5.noclip.config.Config;
-import com.md_5.noclip.listeners.NoClipEntityListener;
-import com.md_5.noclip.listeners.NoClipPlayerListener;
+import com.md_5.noclip.listeners.EntityListener;
+import com.md_5.noclip.listeners.PlayerListener;
 import com.md_5.noclip.updaters.NMSUpdater;
 import com.md_5.noclip.updaters.NoClipUpdater;
 import com.md_5.noclip.updaters.SpoutUpdater;
 import com.md_5.zmod.BaseMod;
-import com.md_5.zmod.Plugin;
 import net.minecraft.server.EntityPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -20,10 +18,10 @@ public class NoClip extends BaseMod {
 
     @Override
     public void enable() {
-        updater = (Plugin.instance.getServer().getPluginManager().isPluginEnabled("Spout")) ? new SpoutUpdater() : new NMSUpdater();
+        updater = (instance.getServer().getPluginManager().isPluginEnabled("Spout")) ? new SpoutUpdater() : new NMSUpdater();
         new Config();
-        new NoClipEntityListener();
-        new NoClipPlayerListener();
+        new EntityListener();
+        new PlayerListener();
         logger.info("Zombe's NoClip for Bukkit by md_5 enabled");
     }
 
