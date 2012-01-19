@@ -1,5 +1,6 @@
 package com.md_5.zmod;
 
+import com.md_5.death.Death;
 import com.md_5.growth.Growth;
 import com.md_5.noclip.NoClip;
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class Plugin extends JavaPlugin {
     public void onEnable() {
         getConfig().options().copyDefaults(true);
         saveConfig();
+        mods.add(new Death());
         mods.add(new Growth());
         mods.add(new NoClip());
         for (BaseMod mod : mods) {

@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.md_5</groupId>
-    <artifactId>NoClip</artifactId>
+    <artifactId>Zombes4Bukkit</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>NoClip</name>
+    <name>Zombes4Bukkit</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

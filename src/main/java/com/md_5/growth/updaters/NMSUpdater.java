@@ -2,12 +2,11 @@ package com.md_5.growth.updaters;
 
 import com.md_5.growth.blocks.nms.*;
 import net.minecraft.server.Block;
-import net.minecraft.server.BlockFlower;
-import net.minecraft.server.BlockMushroom;
 import org.bukkit.Material;
 
-public class NMSUpdater implements GrowthUpdater {
+public class NMSUpdater extends GrowthUpdater {
 
+    @Override
     public void update() {
         for (int id = 0; id < Block.byId.length; id++) {
             if (Block.byId[id] == null) {
@@ -57,5 +56,10 @@ public class NMSUpdater implements GrowthUpdater {
             Block.lightEmission[id] = olds;
             Block.t[id] = oldt;
         }
+    }
+
+    @Override
+    public void updateClass(int id, Block original) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

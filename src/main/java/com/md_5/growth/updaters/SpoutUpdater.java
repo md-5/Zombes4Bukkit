@@ -7,8 +7,9 @@ import org.getspout.spout.block.mcblock.CustomBlock;
 import org.getspout.spout.block.mcblock.CustomFlower;
 import org.getspout.spout.block.mcblock.CustomMushroom;
 
-public class SpoutUpdater implements GrowthUpdater {
+public class SpoutUpdater extends GrowthUpdater {
 
+    @Override
     public void update() {
         for (int id = 0; id < Block.byId.length; id++) {
             if (Block.byId[id] == null) {
@@ -58,5 +59,10 @@ public class SpoutUpdater implements GrowthUpdater {
             Block.lightEmission[id] = olds;
             Block.t[id] = oldt;
         }
+    }
+
+    @Override
+    public void updateClass(int id, Block original) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

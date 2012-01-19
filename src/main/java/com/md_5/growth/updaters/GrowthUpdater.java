@@ -1,6 +1,11 @@
 package com.md_5.growth.updaters;
 
-public interface GrowthUpdater {
+import net.minecraft.server.Block;
 
-    public void update();
+public abstract class GrowthUpdater {
+
+    public abstract void updateClass(final int id, final Block original);
+
+    public void update() {
+    }
 }
