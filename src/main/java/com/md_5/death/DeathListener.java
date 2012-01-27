@@ -5,10 +5,8 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -23,7 +21,7 @@ public class DeathListener implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, Plugin.instance);
     }
 
-    @EventHandler()
+    @EventHandler
     public void onEntityDeath(final EntityDeathEvent event) {
         if (event.getEntity() instanceof Player) {
             final Player player = (Player) event.getEntity();
@@ -35,7 +33,7 @@ public class DeathListener implements Listener {
         }
     }
 
-    @EventHandler()
+    @EventHandler
     public void onPlayerRespawn(final PlayerRespawnEvent event) {
         final Player player = event.getPlayer();
         if (Config.dropInv && player.hasPermission(Permissions.keepInventory)) {

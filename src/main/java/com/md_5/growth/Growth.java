@@ -1,12 +1,12 @@
 package com.md_5.growth;
 
-import com.md_5.growth.listeners.EntityListener;
 import com.md_5.zmod.BaseMod;
 
 public class Growth extends BaseMod {
 
-    public static boolean spout = false;
-    final static int rootTime = 10;
+    public Growth() {
+        super("Growth");
+    }
 
     @Override
     public void enable() {

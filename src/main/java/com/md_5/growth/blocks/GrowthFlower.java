@@ -1,14 +1,14 @@
-package com.md_5.growth.blocks.nms;
+package com.md_5.growth.blocks;
 
 import com.md_5.growth.Spreader;
 import java.util.Random;
 import net.minecraft.server.Block;
-import net.minecraft.server.BlockSapling;
+import net.minecraft.server.BlockFlower;
 import net.minecraft.server.World;
 
-public class GrowthSapling extends BlockSapling {
+public class GrowthFlower extends BlockFlower {
 
-    public GrowthSapling(final Block parent) {
+    public GrowthFlower(final Block parent) {
         super(parent.id, parent.textureId);
     }
 

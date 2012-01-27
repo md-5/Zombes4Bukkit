@@ -1,11 +1,9 @@
-package com.md_5.growth.listeners;
+package com.md_5.growth;
 
-import com.md_5.growth.Rooter;
 import com.md_5.zmod.Plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ItemDespawnEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
@@ -16,7 +14,7 @@ public class EntityListener implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, Plugin.instance);
     }
 
-    @EventHandler(event = ItemSpawnEvent.class, priority = EventPriority.NORMAL)
+    @EventHandler
     public void onItemSpawn(final ItemSpawnEvent event) {
         final Item item = (Item) event.getEntity();
         final int type = item.getItemStack().getTypeId();
@@ -25,7 +23,7 @@ public class EntityListener implements Listener {
         }
     }
 
-    @EventHandler(event = ItemDespawnEvent.class, priority = EventPriority.NORMAL)
+    @EventHandler
     public void onItemDespawn(final ItemDespawnEvent event) {
         final Item item = (Item) event.getEntity();
         final int type = item.getItemStack().getTypeId();

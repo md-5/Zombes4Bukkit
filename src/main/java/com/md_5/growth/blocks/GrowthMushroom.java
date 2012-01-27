@@ -1,14 +1,14 @@
-package com.md_5.growth.blocks.nms;
+package com.md_5.growth.blocks;
 
 import com.md_5.growth.Spreader;
 import java.util.Random;
 import net.minecraft.server.Block;
-import net.minecraft.server.BlockReed;
+import net.minecraft.server.BlockMushroom;
 import net.minecraft.server.World;
 
-public class GrowthReed extends BlockReed {
+public class GrowthMushroom extends BlockMushroom {
 
-    public GrowthReed(final Block parent) {
+    public GrowthMushroom(final Block parent) {
         super(parent.id, parent.textureId);
     }
 

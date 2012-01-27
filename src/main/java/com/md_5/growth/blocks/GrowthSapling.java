@@ -1,15 +1,15 @@
-package com.md_5.growth.blocks.nms;
+package com.md_5.growth.blocks;
 
 import com.md_5.growth.Spreader;
 import java.util.Random;
 import net.minecraft.server.Block;
-import net.minecraft.server.BlockPumpkin;
+import net.minecraft.server.BlockSapling;
 import net.minecraft.server.World;
 
-public class GrowthPumpkin extends BlockPumpkin {
+public class GrowthSapling extends BlockSapling {
 
-    public GrowthPumpkin(final Block parent) {
-        super(parent.id, parent.textureId, false);
+    public GrowthSapling(final Block parent) {
+        super(parent.id, parent.textureId);
     }
 
     @Override

@@ -1,12 +1,15 @@
 package com.md_5.zmod;
 
+import com.md_5.boom.Boom;
 import com.md_5.death.Death;
 import com.md_5.growth.Growth;
 import com.md_5.noclip.NoClip;
+import com.md_5.spawn.Spawn;
 import java.util.HashSet;
 import java.util.logging.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Plugin extends JavaPlugin {
@@ -22,13 +25,18 @@ public class Plugin extends JavaPlugin {
     }
 
     public void onEnable() {
-        getConfig().options().copyDefaults(true);
+        final FileConfiguration conf = getConfig();
+        conf.options().copyDefaults(true);
         saveConfig();
+        mods.add(new Boom());
         mods.add(new Death());
         mods.add(new Growth());
         mods.add(new NoClip());
+        mods.add(new Spawn());
         for (BaseMod mod : mods) {
-            mod.enable();
+            if (conf.getBoolean(mod.name.toLowerCase() + ".enabled")) {
+                mod.enable();
+            }
         }
     }
 

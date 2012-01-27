@@ -6,7 +6,7 @@ death:
   dropInv: false
   loseExp: false
   healthPenalty: 0
-# Growth - Does not support Spout
+# Growth - Spreading does not support Spout
 growth:
   enabled: true
   flower: 15
@@ -22,4 +22,40 @@ growth:
 noclip:
   enabled: true
   messages: true
-
+# Boom - Not implemented yet
+boom:
+  enabled: true
+  boomDropChance: 30
+  boomDropOreChance: 100
+  boomScaleTNT: 1.0
+  boomScaleCreeper: 1.0
+  boomScaleFireball: 0.99
+  boomSafeRange: 16
+# Spawn - Not implemented yet
+spawn:
+  enabled: true
+  allowInNonAir: false
+  allowOnNonNatural: false
+  allowOnGrass: true
+  allowOnCobble: true
+  allowOnSand: true
+  allowOnGravel: true
+  allowOnTree: false
+  allowOnSandstone: false
+  #
+  pigReduction: 75
+  chickenReduction: 25
+  cowReduction : 0
+  sheepReduction: 0
+  squidReduction: 0
+  wolfReduction : 0
+  spiderReduction: 0
+  skeletonReduction: 0
+  creeperReduction: 0
+  zombieReduction: 0
+  slimeReduction: 0
+  ghastReduction: 0
+  pigZombieReduction: 0
+  caveSpiderReduction: 0
+  endermanReduction: 0
+  silverfishReduction: 0

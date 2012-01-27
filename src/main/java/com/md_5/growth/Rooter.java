@@ -17,7 +17,7 @@ public class Rooter implements Runnable {
         final HashSet<Item> toRemove = new HashSet<Item>();
         for (final Item i : toHandle) {
             System.out.println(i.getTicksLived());
-            if (i.getTicksLived() > Growth.rootTime * 20) {
+            if (i.getTicksLived() > Config.rootingTime * 20) {
                 handle(i);
                 toRemove.add(i);
             }

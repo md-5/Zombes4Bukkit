@@ -4,6 +4,10 @@ import com.md_5.zmod.BaseMod;
 
 public class Death extends BaseMod {
 
+    public Death() {
+        super("Death");
+    }
+
     @Override
     public void enable() {
         new DeathListener();

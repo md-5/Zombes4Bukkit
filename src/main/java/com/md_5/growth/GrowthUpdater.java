@@ -1,6 +1,10 @@
 package com.md_5.growth;
 
-import com.md_5.growth.blocks.nms.*;
+import com.md_5.growth.blocks.GrowthFlower;
+import com.md_5.growth.blocks.GrowthReed;
+import com.md_5.growth.blocks.GrowthMushroom;
+import com.md_5.growth.blocks.GrowthSapling;
+import com.md_5.growth.blocks.GrowthPumpkin;
 import net.minecraft.server.Block;
 import org.bukkit.Material;
 

@@ -16,6 +16,10 @@ public class NoClip extends BaseMod {
 
     public NoClipUpdater updater;
 
+    public NoClip() {
+        super("NoClip");
+    }
+
     @Override
     public void enable() {
         updater = (instance.getServer().getPluginManager().isPluginEnabled("Spout")) ? new SpoutUpdater() : new NMSUpdater();
