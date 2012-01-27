@@ -10,8 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class Rooter implements Runnable {
 
-    final static int rootSpace = 3;
-    final static float growthSqrRadius = (0.5f + rootSpace) * (0.5f + rootSpace);
+    final static float growthSqrRadius = (0.5f + Config.rootingSpace) * (0.5f + Config.rootingSpace);
     public final static HashSet<Item> toHandle = new HashSet<Item>();
 
     public void run() {
@@ -49,12 +48,12 @@ public class Rooter implements Runnable {
         }
         if (itemStack.getTypeId() == Material.SAPLING.getId()) {
             if (blockBelow == Material.DIRT.getId() || blockBelow == Material.GRASS.getId()) {
-                for (int x2 = -rootSpace; x2 <= rootSpace; x2++) {
-                    for (int z2 = -rootSpace; z2 <= rootSpace; z2++) {
+                for (int x2 = -Config.rootingSpace; x2 <= Config.rootingSpace; x2++) {
+                    for (int z2 = -Config.rootingSpace; z2 <= Config.rootingSpace; z2++) {
                         if (x2 * x2 + z2 * z2 > growthSqrRadius) {
                             continue;
                         }
-                        for (int y2 = -rootSpace; y2 <= rootSpace; y2++) {
+                        for (int y2 = -Config.rootingSpace; y2 <= Config.rootingSpace; y2++) {
                             final int adjacentBlock = world.getBlockTypeIdAt(x + x2, y + y2, z + z2);
                             if (adjacentBlock == Material.LEAVES.getId() || adjacentBlock == Material.LOG.getId()) {
                                 return;

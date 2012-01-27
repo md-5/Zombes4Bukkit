@@ -57,14 +57,4 @@ public class NoClip extends BaseMod {
             player.getPlayer().sendMessage(ChatColor.GREEN + "NoClip successfully disabled");
         }
     }
-
-    @Override
-    public void init() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }

@@ -23,11 +23,11 @@ public class DeathListener implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, Plugin.instance);
     }
 
-    @EventHandler(event = EntityDeathEvent.class, priority = EventPriority.NORMAL)
+    @EventHandler()
     public void onEntityDeath(final EntityDeathEvent event) {
         if (event.getEntity() instanceof Player) {
             final Player player = (Player) event.getEntity();
-            if (Config.keepInventory && player.hasPermission(Permissions.keepInventory)) {
+            if (Config.dropInv && player.hasPermission(Permissions.keepInventory)) {
                 final PlayerInventory inventory = player.getInventory();
                 inventories.put(player.getName(), inventory);
                 inventory.clear();
@@ -35,10 +35,10 @@ public class DeathListener implements Listener {
         }
     }
 
-    @EventHandler(event = PlayerRespawnEvent.class, priority = EventPriority.NORMAL)
+    @EventHandler()
     public void onPlayerRespawn(final PlayerRespawnEvent event) {
         final Player player = event.getPlayer();
-        if (Config.keepInventory && player.hasPermission(Permissions.keepInventory)) {
+        if (Config.dropInv && player.hasPermission(Permissions.keepInventory)) {
             final PlayerInventory inventory = inventories.get(player.getName());
             if (inventory != null) {
                 for (int i = 0; i <= inventory.getSize(); i++) {
@@ -55,7 +55,6 @@ public class DeathListener implements Listener {
         if (!player.hasPermission(Permissions.penaltyExempt)) {
             player.sendMessage(ChatColor.RED + "You have had a penalty of " + Config.penalty + " applied.");
             player.damage(Config.penalty);
-
         }
     }
 }

@@ -1,5 +1,25 @@
-# NoClip v1.2 by md_5
-# magicToken: §6Zombe's NoClip is allowed on this server &f &f &4 &0 &9 &6
-messages: true
-# enableMessage: &aNoClip successfully enabled
-# disableMessage: &aNoClip successfully disabled
+# Zombes4Bukkit v1.0 by md_5
+debug: true
+# Death
+death:
+  enabled: true
+  dropInv: false
+  loseExp: false
+  healthPenalty: 0
+#Growth
+growth:
+  enabled: true
+  flower: 15
+  shroom: 50
+  pumpkin: 30
+  sapling: 20
+  reed: 10
+  rooting: true
+  planting: true
+  rootingSpace: 3
+  rootingTime: 10
+# NoClip
+noclip:
+  enabled: true
+  messages: true
+

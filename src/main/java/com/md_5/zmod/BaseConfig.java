@@ -5,9 +5,4 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class BaseConfig extends Plugin {
 
     public final FileConfiguration conf = instance.getConfig();
-
-    @Override
-    public FileConfiguration getConfig() {
-        return super.getConfig();
-    }
 }

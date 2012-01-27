@@ -8,25 +8,24 @@ import org.bukkit.Material;
 public class Spreader {
 
     public static final int MAX_SHROOM = 13, MIN_OTHER = 8;
-    public static int optGrowthFlower = 1, optGrowthShroom = 1, optGrowthPumpkin = 1, optGrowthSappling = 1, optGrowthReed = 1, optGrowthRootingSpace = 1, optGrowthRootingTime = 1;
 
     public static void handle(final World world, final int i, final int j, final int k, final Random random, final Block block) {
         int chance = 1;
         final int id = block.id;
         if (id == Material.BROWN_MUSHROOM.getId() || id == Material.RED_MUSHROOM.getId()) {
-            chance = optGrowthShroom;
+            chance = Config.shroom;
         }
         if (id == Material.RED_ROSE.getId() || id == Material.YELLOW_FLOWER.getId()) {
-            chance = optGrowthFlower;
+            chance = Config.flower;
         }
         if (id == Material.PUMPKIN.getId()) {
-            chance = optGrowthPumpkin;
+            chance = Config.pumpkin;
         }
         if (id == Material.SAPLING.getId()) {
-            chance = optGrowthSappling;
+            chance = Config.sapling;
         }
         if (id == Material.SUGAR_CANE_BLOCK.getId()) {
-            chance = optGrowthReed;
+            chance = Config.reed;
         }
         if (random.nextInt(chance) == 0) {
             final int toX = random.nextInt(3) - 1;

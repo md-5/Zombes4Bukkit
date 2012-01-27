@@ -4,6 +4,12 @@ import com.md_5.zmod.BaseConfig;
 
 public class Config extends BaseConfig {
 
-    public static boolean keepInventory = true;
-    public static int penalty = 10;
+    public static boolean dropInv, loseExp;
+    public static int penalty;
+
+    public Config() {
+        dropInv = conf.getBoolean("death.dropInv");
+        loseExp = conf.getBoolean("death.loseExp");
+        penalty = conf.getInt("death.healthPenalty");
+    }
 }
