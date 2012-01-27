@@ -6,7 +6,7 @@ death:
   dropInv: false
   loseExp: false
   healthPenalty: 0
-#Growth
+# Growth - Does not support Spout
 growth:
   enabled: true
   flower: 15

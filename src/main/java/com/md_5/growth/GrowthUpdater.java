@@ -1,16 +1,12 @@
-package com.md_5.growth.updaters;
+package com.md_5.growth;
 
-import com.md_5.growth.blocks.spout.*;
+import com.md_5.growth.blocks.nms.*;
 import net.minecraft.server.Block;
 import org.bukkit.Material;
-import org.getspout.spout.block.mcblock.CustomBlock;
-import org.getspout.spout.block.mcblock.CustomFlower;
-import org.getspout.spout.block.mcblock.CustomMushroom;
 
-public class SpoutUpdater extends GrowthUpdater {
+public class GrowthUpdater {
 
-    @Override
-    public void update() {
+    public static void update() {
         for (int id = 0; id < Block.byId.length; id++) {
             if (Block.byId[id] == null) {
                 continue;
@@ -25,31 +21,31 @@ public class SpoutUpdater extends GrowthUpdater {
             final boolean oldt = Block.t[id];
             if (id == Material.BROWN_MUSHROOM.getId()) {
                 Block.byId[id] = null;
-                Block.byId[id] = new GrowthMushroom((CustomMushroom) original);
+                Block.byId[id] = new GrowthMushroom(original);
             }
             if (id == Material.RED_MUSHROOM.getId()) {
                 Block.byId[id] = null;
-                Block.byId[id] = new GrowthMushroom((CustomMushroom) original);
+                Block.byId[id] = new GrowthMushroom(original);
             }
             if (id == Material.RED_ROSE.getId()) {
                 Block.byId[id] = null;
-                Block.byId[id] = new GrowthFlower((CustomFlower) original);
+                Block.byId[id] = new GrowthFlower(original);
             }
             if (id == Material.PUMPKIN.getId()) {
                 Block.byId[id] = null;
-                Block.byId[id] = new GrowthPumpkin((CustomBlock) original);
+                Block.byId[id] = new GrowthPumpkin(original);
             }
             if (id == Material.SAPLING.getId()) {
                 Block.byId[id] = null;
-                Block.byId[id] = new GrowthSapling((CustomFlower) original);
+                Block.byId[id] = new GrowthSapling(original);
             }
             if (id == Material.SUGAR_CANE_BLOCK.getId()) {
                 Block.byId[id] = null;
-                Block.byId[id] = new GrowthReed((CustomBlock) original);
+                Block.byId[id] = new GrowthReed(original);
             }
             if (id == Material.YELLOW_FLOWER.getId()) {
                 Block.byId[id] = null;
-                Block.byId[id] = new GrowthFlower((CustomFlower) original);
+                Block.byId[id] = new GrowthFlower(original);
             }
             Block.n[id] = oldn;
             Block.o[id] = oldo;
@@ -59,10 +55,5 @@ public class SpoutUpdater extends GrowthUpdater {
             Block.lightEmission[id] = olds;
             Block.t[id] = oldt;
         }
-    }
-
-    @Override
-    public void updateClass(int id, Block original) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
