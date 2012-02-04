@@ -1,14 +1,14 @@
-# Zombes4Bukkit v1.0 by md_5
+# Zombes4Bukkit by md_5
 debug: true
 # Death
 death:
-  enabled: true
+  enabled: false
   dropInv: false
   loseExp: false
   healthPenalty: 0
-# Growth - Spreading does not support Spout
+# Growth
 growth:
-  enabled: true
+  enabled: false
   flower: 15
   shroom: 50
   pumpkin: 30
@@ -24,7 +24,7 @@ noclip:
   messages: true
 # Boom - Not implemented yet
 boom:
-  enabled: true
+  enabled: false
   boomDropChance: 30
   boomDropOreChance: 100
   boomScaleTNT: 1.0
@@ -33,7 +33,7 @@ boom:
   boomSafeRange: 16
 # Spawn - Not implemented yet
 spawn:
-  enabled: true
+  enabled: false
   allowInNonAir: false
   allowOnNonNatural: false
   allowOnGrass: true

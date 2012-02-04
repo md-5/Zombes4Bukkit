@@ -1,10 +1,9 @@
 name: Zombes4Bukkit
-version: 1.2
-description: The one and only official Bukkit plugin to allow the use of Zombe's NoClip mod
+version: 0.1
+description: The one and only official Bukkit plugin to allow the use of Zombe's NoClip mod. Also contains many features from Zombe's single player mod collection
 author: md_5
 
 main: com.md_5.zmod.Plugin
-softdepend: [Spout]
 
 commands:
   noclip:

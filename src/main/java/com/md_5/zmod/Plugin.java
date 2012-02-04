@@ -5,6 +5,7 @@ import com.md_5.death.Death;
 import com.md_5.growth.Growth;
 import com.md_5.noclip.NoClip;
 import com.md_5.spawn.Spawn;
+import java.io.File;
 import java.util.HashSet;
 import java.util.logging.Logger;
 import org.bukkit.command.Command;
@@ -24,10 +25,13 @@ public class Plugin extends JavaPlugin {
         logger = getLogger();
     }
 
+    @Override
     public void onEnable() {
+        if (!new File(getDataFolder(), "config.yml").exists()) {
+            saveDefaultConfig();
+        }
         final FileConfiguration conf = getConfig();
         conf.options().copyDefaults(true);
-        saveConfig();
         mods.add(new Boom());
         mods.add(new Death());
         mods.add(new Growth());
@@ -35,11 +39,13 @@ public class Plugin extends JavaPlugin {
         mods.add(new Spawn());
         for (BaseMod mod : mods) {
             if (conf.getBoolean(mod.name.toLowerCase() + ".enabled")) {
+                logger.info(mod.name + "Enabled");
                 mod.enable();
             }
         }
     }
 
+    @Override
     public void onDisable() {
         for (BaseMod mod : mods) {
             mod.disable();

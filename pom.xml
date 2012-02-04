@@ -9,26 +9,29 @@
     <packaging>jar</packaging>
 
     <name>Zombes4Bukkit</name>
+    <url>https://github.com/md-5/Zombes4Bukkit</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>repobo-snap</id>
+            <url>http://repo.bukkit.org/content/groups/public</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
-            <version>1.1-R1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.getspout</groupId>
-            <artifactId>spoutplugin</artifactId>
-            <version>dev-SNAPSHOT</version>
+            <artifactId>bukkit</artifactId>
+            <version>1.1-R4-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.1-R1-SNAPSHOT</version>
+            <artifactId>craftbukkit</artifactId>
+            <version>1.1-R4-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
