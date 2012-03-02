@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 public class NoClipNetServerHandler extends NetServerHandler {
 
     private MinecraftServer minecraftServer;
-    private double x;
+    private double q;
     private double y;
     private double z;
     private boolean checkMovement = true;
@@ -36,8 +36,8 @@ public class NoClipNetServerHandler extends NetServerHandler {
             double d0;
 
             if (!this.checkMovement) {
-                d0 = packet10flying.y - this.y;
-                if (packet10flying.x == this.x && d0 * d0 < 0.01D && packet10flying.z == this.z) {
+                d0 = packet10flying.y - this.z;
+                if (packet10flying.x == this.y && d0 * d0 < 0.01D && packet10flying.z == this.q) {
                     this.checkMovement = true;
                 }
             }
@@ -105,7 +105,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
                     float f = this.player.yaw;
                     float f1 = this.player.pitch;
 
-                    this.player.vehicle.i();
+                    this.player.vehicle.i_();
                     d1 = this.player.locX;
                     d2 = this.player.locY;
                     d3 = this.player.locZ;
@@ -118,6 +118,11 @@ public class NoClipNetServerHandler extends NetServerHandler {
                     }
 
                     if (packet10flying.hasPos && packet10flying.y == -999.0D && packet10flying.stance == -999.0D) {
+                        if (packet10flying.x > 1 || packet10flying.z > 1) {
+                            System.err.println(player.getName() + " was caught trying to crash the server with an invalid position.");
+                            player.kickPlayer("Nope!");
+                            return;
+                        }
                         d5 = packet10flying.x;
                         d4 = packet10flying.z;
                     }
@@ -133,28 +138,28 @@ public class NoClipNetServerHandler extends NetServerHandler {
                     }
 
                     if (this.player.vehicle != null) {
-                        this.player.vehicle.i();
+                        this.player.vehicle.i_();
                     }
 
                     this.minecraftServer.serverConfigurationManager.d(this.player);
-                    this.x = this.player.locX;
-                    this.y = this.player.locY;
-                    this.z = this.player.locZ;
+                    this.y = this.player.locX;
+                    this.z = this.player.locY;
+                    this.q = this.player.locZ;
                     worldserver.playerJoinedWorld(this.player);
                     return;
                 }
 
                 if (this.player.isSleeping()) {
                     this.player.a(true);
-                    this.player.setLocation(this.x, this.y, this.z, this.player.yaw, this.player.pitch);
+                    this.player.setLocation(this.y, this.z, this.q, this.player.yaw, this.player.pitch);
                     worldserver.playerJoinedWorld(this.player);
                     return;
                 }
 
                 d0 = this.player.locY;
-                this.x = this.player.locX;
-                this.y = this.player.locY;
-                this.z = this.player.locZ;
+                this.y = this.player.locX;
+                this.z = this.player.locY;
+                this.q = this.player.locZ;
                 d1 = this.player.locX;
                 d2 = this.player.locY;
                 d3 = this.player.locZ;
@@ -189,7 +194,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
 
                 this.player.a(true);
                 this.player.bO = 0.0F;
-                this.player.setLocation(this.x, this.y, this.z, f2, f3);
+                this.player.setLocation(this.y, this.z, this.q, f2, f3);
                 if (!this.checkMovement) {
                     return;
                 }
@@ -204,7 +209,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
 
                 this.player.move(d4, d6, d7);
                 this.player.onGround = packet10flying.g;
-                this.player.b(d4, d6, d7);
+                this.player.checkMovement(d4, d6, d7);
 
                 this.player.setLocation(d1, d2, d3, f2, f3);
 

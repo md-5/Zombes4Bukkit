@@ -11,6 +11,9 @@ commands:
     permission: noclip
 
 permissions:
-  noclip:
+  zombes.noclip:
     description: Allow the use of Zombe's NoClip mod
+    default: op
+  noclip:
+    description: Legacy permission to allow the use of Zombe's NoClip mod
     default: op

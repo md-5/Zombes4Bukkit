@@ -1,10 +1,6 @@
 package com.md_5.growth;
 
-import com.md_5.growth.blocks.GrowthFlower;
-import com.md_5.growth.blocks.GrowthReed;
-import com.md_5.growth.blocks.GrowthMushroom;
-import com.md_5.growth.blocks.GrowthSapling;
-import com.md_5.growth.blocks.GrowthPumpkin;
+import com.md_5.growth.blocks.*;
 import net.minecraft.server.Block;
 import org.bukkit.Material;
 
@@ -16,13 +12,11 @@ public class GrowthUpdater {
                 continue;
             }
             final Block original = Block.byId[id];
-            final boolean oldn = Block.n[id];
-            final boolean oldo = Block.o[id];
-            final boolean oldTileEntity = Block.isTileEntity[id];
-            final int oldq = Block.lightBlock[id];
-            final boolean oldr = Block.r[id];
-            final int olds = Block.lightEmission[id];
-            final boolean oldt = Block.t[id];
+            boolean oldn = Block.n[id];
+            int oldq = Block.lightBlock[id];
+            boolean oldp = Block.p[id];
+            int olds = Block.lightEmission[id];
+            boolean oldr = Block.r[id];
             if (id == Material.BROWN_MUSHROOM.getId()) {
                 Block.byId[id] = null;
                 Block.byId[id] = new GrowthMushroom(original);
@@ -52,12 +46,10 @@ public class GrowthUpdater {
                 Block.byId[id] = new GrowthFlower(original);
             }
             Block.n[id] = oldn;
-            Block.o[id] = oldo;
-            Block.isTileEntity[id] = oldTileEntity;
+            Block.p[id] = oldp;
             Block.lightBlock[id] = oldq;
             Block.r[id] = oldr;
             Block.lightEmission[id] = olds;
-            Block.t[id] = oldt;
         }
     }
 }

@@ -8,6 +8,6 @@ public class Config extends BaseConfig {
     public static boolean MESSAGES;
 
     public Config() {
-        MESSAGES = conf.getBoolean("messages");
+        MESSAGES = conf.getBoolean("noclip.messages");
     }
 }
