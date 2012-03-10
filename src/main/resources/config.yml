@@ -1,5 +1,4 @@
 # Zombes4Bukkit by md_5
-debug: true
 # Death
 death:
   enabled: false

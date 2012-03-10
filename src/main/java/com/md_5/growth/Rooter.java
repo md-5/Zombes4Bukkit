@@ -10,14 +10,14 @@ import org.bukkit.inventory.ItemStack;
 
 public class Rooter implements Runnable {
 
-    final static float growthSqrRadius = (0.5f + Config.rootingSpace) * (0.5f + Config.rootingSpace);
+    final static float growthSqrRadius = (0.5f + Growth.rootingSpace) * (0.5f + Growth.rootingSpace);
     public final static HashSet<Item> toHandle = new HashSet<Item>();
 
     public void run() {
         final HashSet<Item> toRemove = new HashSet<Item>();
         for (final Item i : toHandle) {
             System.out.println(i.getTicksLived());
-            if (i.getTicksLived() > Config.rootingTime * 20) {
+            if (i.getTicksLived() > Growth.rootingTime * 20) {
                 handle(i);
                 toRemove.add(i);
             }
@@ -48,12 +48,12 @@ public class Rooter implements Runnable {
         }
         if (itemStack.getTypeId() == Material.SAPLING.getId()) {
             if (blockBelow == Material.DIRT.getId() || blockBelow == Material.GRASS.getId()) {
-                for (int x2 = -Config.rootingSpace; x2 <= Config.rootingSpace; x2++) {
-                    for (int z2 = -Config.rootingSpace; z2 <= Config.rootingSpace; z2++) {
+                for (int x2 = -Growth.rootingSpace; x2 <= Growth.rootingSpace; x2++) {
+                    for (int z2 = -Growth.rootingSpace; z2 <= Growth.rootingSpace; z2++) {
                         if (x2 * x2 + z2 * z2 > growthSqrRadius) {
                             continue;
                         }
-                        for (int y2 = -Config.rootingSpace; y2 <= Config.rootingSpace; y2++) {
+                        for (int y2 = -Growth.rootingSpace; y2 <= Growth.rootingSpace; y2++) {
                             final int adjacentBlock = world.getBlockTypeIdAt(x + x2, y + y2, z + z2);
                             if (adjacentBlock == Material.LEAVES.getId() || adjacentBlock == Material.LOG.getId()) {
                                 return;

@@ -3,6 +3,7 @@ package com.md_5.zmod;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public abstract class BaseMod {
 
@@ -13,7 +14,8 @@ public abstract class BaseMod {
         this.name = name;
     }
 
-    public abstract void enable();
+    public void enable() {
+    }
 
     public void disable() {
     }
@@ -24,5 +26,9 @@ public abstract class BaseMod {
 
     public Server getServer() {
         return instance.getServer();
+    }
+
+    public FileConfiguration getConfig() {
+        return instance.getConfig();
     }
 }

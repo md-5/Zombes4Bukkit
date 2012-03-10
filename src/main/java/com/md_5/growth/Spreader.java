@@ -13,19 +13,19 @@ public class Spreader {
         int chance = 1;
         final int id = block.id;
         if (id == Material.BROWN_MUSHROOM.getId() || id == Material.RED_MUSHROOM.getId()) {
-            chance = Config.shroom;
+            chance = Growth.shroom;
         }
         if (id == Material.RED_ROSE.getId() || id == Material.YELLOW_FLOWER.getId()) {
-            chance = Config.flower;
+            chance = Growth.flower;
         }
         if (id == Material.PUMPKIN.getId()) {
-            chance = Config.pumpkin;
+            chance = Growth.pumpkin;
         }
         if (id == Material.SAPLING.getId()) {
-            chance = Config.sapling;
+            chance = Growth.sapling;
         }
         if (id == Material.SUGAR_CANE_BLOCK.getId()) {
-            chance = Config.reed;
+            chance = Growth.reed;
         }
         if (random.nextInt(chance) == 0) {
             final int toX = random.nextInt(3) - 1;
