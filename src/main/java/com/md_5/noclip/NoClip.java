@@ -24,6 +24,7 @@ public class NoClip extends BaseMod implements Listener {
     public static Constructor<? extends NetServerHandler> nsh;
 
     public NoClip() {
+        // TEST
         super("NoClip");
     }
 
