@@ -83,9 +83,11 @@ public class NoClip extends BaseMod implements Listener {
 
     @EventHandler
     public void onEntityDamage(final EntityDamageEvent event) {
-        final Entity entity = event.getEntity();
-        if (entity.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().bQ) {
-            event.setCancelled(true);
+        Entity entity = event.getEntity();
+        if (entity != null) {
+            if (entity.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().bQ) {
+                event.setCancelled(true);
+            }
         }
     }
 
