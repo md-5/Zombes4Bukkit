@@ -48,10 +48,12 @@ public class NoClip extends BaseMod implements Listener {
     @Override
     public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
         if (sender instanceof CraftPlayer) {
-            if (args[0].equalsIgnoreCase("enabled")) {
-                enableNoClip(((CraftPlayer) sender).getHandle());
-            } else if (args[0].equalsIgnoreCase("disabled")) {
-                disableNoClip(((CraftPlayer) sender).getHandle());
+            if (args.length == 0) {
+                if (args[0].equalsIgnoreCase("enabled")) {
+                    enableNoClip(((CraftPlayer) sender).getHandle());
+                } else if (args[0].equalsIgnoreCase("disabled")) {
+                    disableNoClip(((CraftPlayer) sender).getHandle());
+                }
             }
         }
         return true;
