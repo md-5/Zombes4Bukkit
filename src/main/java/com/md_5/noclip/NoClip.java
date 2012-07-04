@@ -62,14 +62,14 @@ public class NoClip extends JavaPlugin implements Listener {
         }
     }
 
-    public static void updateNetServerHandler(EntityPlayer player) {
+    public void updateNetServerHandler(EntityPlayer player) {
         player.netServerHandler.disconnected = true;
         NetServerHandler handler = new NoClipNetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
         player.server.networkListenThread.a(handler);
     }
 
-    public static void resetNetServerHandler(EntityPlayer player) {
+    public void resetNetServerHandler(EntityPlayer player) {
         player.netServerHandler.disconnected = true;
         NetServerHandler handler = new NetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
