@@ -21,10 +21,6 @@
             <id>repobo-snap</id>
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
-        <repository>
-            <id>spout-repo</id>
-            <url>http://repo.spout.org</url>
-        </repository>
     </repositories>
 
     <build>
@@ -51,17 +47,12 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.2.4-R0.1-SNAPSHOT</version>
+            <version>1.2.5-R4.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
-            <version>1.2.4-R0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.getspout</groupId>
-            <artifactId>spoutplugin</artifactId>
-            <version>dev-SNAPSHOT</version>
+            <version>1.2.5-R4.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
