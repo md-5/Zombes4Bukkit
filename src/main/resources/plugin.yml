@@ -9,7 +9,7 @@ softdepend: [SpoutPlugin]
 commands:
   noclip:
     description: Internal Zombe's NoClip enable / disable command
-    permission: noclip
+    permission: zombes.noclip
 
 permissions:
   zombes.noclip:
