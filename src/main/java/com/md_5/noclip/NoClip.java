@@ -56,8 +56,11 @@ public class NoClip extends JavaPlugin implements Listener {
     public void onEntityDamage(final EntityDamageEvent event) {
         Entity entity = event.getEntity();
         if (entity != null) {
-            if (entity.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().bQ) {
-                event.setCancelled(true);
+            EntityDamageEvent lastCause = entity.getLastDamageCause();
+            if (lastCause != null) {
+                if (lastCause.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().bQ) {
+                    event.setCancelled(true);
+                }
             }
         }
     }
