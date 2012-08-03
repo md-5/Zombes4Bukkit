@@ -1,5 +1,6 @@
 package com.md_5.noclip;
 
+import net.minecraft.server.DedicatedServer;
 import net.minecraft.server.EntityPlayer;
 import net.minecraft.server.NetServerHandler;
 import org.bukkit.command.Command;
@@ -35,12 +36,12 @@ public class NoClip extends JavaPlugin implements Listener {
     }
 
     private void enableNoClip(EntityPlayer player) {
-        player.bQ = true;
+        player.ak = true;
         updateNetServerHandler(player);
     }
 
     private void disableNoClip(EntityPlayer player) {
-        player.bQ = false;
+        player.ak = false;
         resetNetServerHandler(player);
     }
 
@@ -58,7 +59,7 @@ public class NoClip extends JavaPlugin implements Listener {
         if (entity != null) {
             EntityDamageEvent lastCause = entity.getLastDamageCause();
             if (lastCause != null) {
-                if (lastCause.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().bQ) {
+                if (lastCause.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().ak) {
                     event.setCancelled(true);
                 }
             }
@@ -69,13 +70,13 @@ public class NoClip extends JavaPlugin implements Listener {
         player.netServerHandler.disconnected = true;
         NetServerHandler handler = new NoClipNetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        player.server.networkListenThread.a(handler);
+        ((DedicatedServer) player.server).ac().a(handler);
     }
 
     public void resetNetServerHandler(EntityPlayer player) {
         player.netServerHandler.disconnected = true;
         NetServerHandler handler = new NetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        player.server.networkListenThread.a(handler);
+        ((DedicatedServer) player.server).ac().a(handler);
     }
 }

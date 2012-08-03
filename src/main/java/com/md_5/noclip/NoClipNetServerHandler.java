@@ -15,7 +15,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
     private double z;
     private boolean checkMovement = true;
 
-    public NoClipNetServerHandler(MinecraftServer minecraftserver, NetworkManager networkmanager, EntityPlayer entityplayer) {
+    public NoClipNetServerHandler(MinecraftServer minecraftserver, INetworkManager networkmanager, EntityPlayer entityplayer) {
         super(minecraftserver, networkmanager, entityplayer);
         this.minecraftServer = minecraftserver;
         this.server = minecraftserver.server;
@@ -105,7 +105,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
                     float f = this.player.yaw;
                     float f1 = this.player.pitch;
 
-                    this.player.vehicle.i_();
+                    this.player.vehicle.V();
                     d1 = this.player.locX;
                     d2 = this.player.locY;
                     d3 = this.player.locZ;
@@ -128,7 +128,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
                     }
 
                     this.player.onGround = packet10flying.g;
-                    this.player.a(true);
+                    this.player.g();
                     this.player.move(d5, 0.0D, d4);
                     this.player.setLocation(d1, d2, d3, f, f1);
                     this.player.motX = d5;
@@ -138,10 +138,10 @@ public class NoClipNetServerHandler extends NetServerHandler {
                     }
 
                     if (this.player.vehicle != null) {
-                        this.player.vehicle.i_();
+                        this.player.vehicle.V();
                     }
 
-                    this.minecraftServer.serverConfigurationManager.d(this.player);
+                    this.minecraftServer.getServerConfigurationManager().d(this.player);
                     this.y = this.player.locX;
                     this.z = this.player.locY;
                     this.q = this.player.locZ;
@@ -150,7 +150,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
                 }
 
                 if (this.player.isSleeping()) {
-                    this.player.a(true);
+                    this.player.g();
                     this.player.setLocation(this.y, this.z, this.q, this.player.yaw, this.player.pitch);
                     worldserver.playerJoinedWorld(this.player);
                     return;
@@ -192,8 +192,8 @@ public class NoClipNetServerHandler extends NetServerHandler {
                     f3 = packet10flying.pitch;
                 }
 
-                this.player.a(true);
-                this.player.bO = 0.0F;
+                this.player.g();
+                this.player.V = 0.0F;
                 this.player.setLocation(this.y, this.z, this.q, f2, f3);
                 if (!this.checkMovement) {
                     return;
@@ -204,7 +204,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
                 double d7 = d3 - this.player.locZ;
 
                 if (this.player.onGround && !packet10flying.g && d6 > 0.0D) {
-                    this.player.c(0.2F);
+                    this.player.j(0.2F);
                 }
 
                 this.player.move(d4, d6, d7);
@@ -214,7 +214,7 @@ public class NoClipNetServerHandler extends NetServerHandler {
                 this.player.setLocation(d1, d2, d3, f2, f3);
 
                 this.player.onGround = packet10flying.g;
-                this.minecraftServer.serverConfigurationManager.d(this.player);
+                this.minecraftServer.getServerConfigurationManager().d(this.player);
                 if (this.player.itemInWorldManager.isCreative()) {
                     return;
                 }
