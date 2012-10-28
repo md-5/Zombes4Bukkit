@@ -36,12 +36,12 @@ public class NoClip extends JavaPlugin implements Listener {
     }
 
     private void enableNoClip(EntityPlayer player) {
-        player.ak = true;
+        player.Y = true;
         updateNetServerHandler(player);
     }
 
     private void disableNoClip(EntityPlayer player) {
-        player.ak = false;
+        player.Y = false;
         resetNetServerHandler(player);
     }
 
@@ -59,7 +59,7 @@ public class NoClip extends JavaPlugin implements Listener {
         if (entity != null) {
             EntityDamageEvent lastCause = entity.getLastDamageCause();
             if (lastCause != null) {
-                if (lastCause.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().ak) {
+                if (lastCause.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().Y) {
                     event.setCancelled(true);
                 }
             }
@@ -70,13 +70,13 @@ public class NoClip extends JavaPlugin implements Listener {
         player.netServerHandler.disconnected = true;
         NetServerHandler handler = new NoClipNetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        ((DedicatedServer) player.server).ac().a(handler);
+        ((DedicatedServer) player.server).ae().a(handler);
     }
 
     public void resetNetServerHandler(EntityPlayer player) {
         player.netServerHandler.disconnected = true;
         NetServerHandler handler = new NetServerHandler(player.server, player.netServerHandler.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        ((DedicatedServer) player.server).ac().a(handler);
+        ((DedicatedServer) player.server).ae().a(handler);
     }
 }
