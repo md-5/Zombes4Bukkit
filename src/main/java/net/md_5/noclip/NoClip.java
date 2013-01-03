@@ -1,11 +1,10 @@
-package com.md_5.noclip;
+package net.md_5.noclip;
 
-import net.minecraft.server.DedicatedServer;
-import net.minecraft.server.EntityPlayer;
-import net.minecraft.server.NetServerHandler;
+import net.minecraft.server.v1_4_6.EntityPlayer;
+import net.minecraft.server.v1_4_6.PlayerConnection;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_4_6.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,13 +35,19 @@ public class NoClip extends JavaPlugin implements Listener {
     }
 
     private void enableNoClip(EntityPlayer player) {
-        player.Y = true;
-        updateNetServerHandler(player);
+        // player.Y = true;
+        player.playerConnection.disconnected = true;
+        PlayerConnection handler = new NoClipPlayerConnection(player.server, player.playerConnection.networkManager, player);
+        handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
+        player.server.ae().a(handler);
     }
 
     private void disableNoClip(EntityPlayer player) {
-        player.Y = false;
-        resetNetServerHandler(player);
+        // player.Y = false;
+        player.playerConnection.disconnected = true;
+        PlayerConnection handler = new PlayerConnection(player.server, player.playerConnection.networkManager, player);
+        handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
+        player.server.ae().a(handler);
     }
 
     @EventHandler
@@ -64,19 +69,5 @@ public class NoClip extends JavaPlugin implements Listener {
                 }
             }
         }
-    }
-
-    public void updateNetServerHandler(EntityPlayer player) {
-        player.netServerHandler.disconnected = true;
-        NetServerHandler handler = new NoClipNetServerHandler(player.server, player.netServerHandler.networkManager, player);
-        handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        ((DedicatedServer) player.server).ae().a(handler);
-    }
-
-    public void resetNetServerHandler(EntityPlayer player) {
-        player.netServerHandler.disconnected = true;
-        NetServerHandler handler = new NetServerHandler(player.server, player.netServerHandler.networkManager, player);
-        handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        ((DedicatedServer) player.server).ae().a(handler);
     }
 }
