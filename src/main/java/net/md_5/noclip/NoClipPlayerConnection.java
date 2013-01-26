@@ -1,14 +1,14 @@
 package net.md_5.noclip;
 
-import net.minecraft.server.v1_4_6.EntityPlayer;
-import net.minecraft.server.v1_4_6.INetworkManager;
-import net.minecraft.server.v1_4_6.MinecraftServer;
-import net.minecraft.server.v1_4_6.Packet10Flying;
-import net.minecraft.server.v1_4_6.Packet13PlayerLookMove;
-import net.minecraft.server.v1_4_6.PlayerConnection;
-import net.minecraft.server.v1_4_6.WorldServer;
+import net.minecraft.server.v1_4_R1.EntityPlayer;
+import net.minecraft.server.v1_4_R1.INetworkManager;
+import net.minecraft.server.v1_4_R1.MinecraftServer;
+import net.minecraft.server.v1_4_R1.Packet10Flying;
+import net.minecraft.server.v1_4_R1.Packet13PlayerLookMove;
+import net.minecraft.server.v1_4_R1.PlayerConnection;
+import net.minecraft.server.v1_4_R1.WorldServer;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_4_6.CraftServer;
+import org.bukkit.craftbukkit.v1_4_R1.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
