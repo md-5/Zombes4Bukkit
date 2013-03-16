@@ -1,14 +1,14 @@
 package net.md_5.noclip;
 
-import net.minecraft.server.v1_4_6.EntityPlayer;
-import net.minecraft.server.v1_4_6.INetworkManager;
-import net.minecraft.server.v1_4_6.MinecraftServer;
-import net.minecraft.server.v1_4_6.Packet10Flying;
-import net.minecraft.server.v1_4_6.Packet13PlayerLookMove;
-import net.minecraft.server.v1_4_6.PlayerConnection;
-import net.minecraft.server.v1_4_6.WorldServer;
+import net.minecraft.server.v1_5_R1.EntityPlayer;
+import net.minecraft.server.v1_5_R1.INetworkManager;
+import net.minecraft.server.v1_5_R1.MinecraftServer;
+import net.minecraft.server.v1_5_R1.Packet10Flying;
+import net.minecraft.server.v1_5_R1.Packet13PlayerLookMove;
+import net.minecraft.server.v1_5_R1.PlayerConnection;
+import net.minecraft.server.v1_5_R1.WorldServer;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_4_6.CraftServer;
+import org.bukkit.craftbukkit.v1_5_R1.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -16,9 +16,9 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 public class NoClipPlayerConnection extends PlayerConnection {
 
     private MinecraftServer minecraftServer;
-    private double q;
     private double y;
     private double z;
+    private double p;
 
     public NoClipPlayerConnection(MinecraftServer minecraftserver, INetworkManager networkmanager, EntityPlayer entityplayer) {
         super(minecraftserver, networkmanager, entityplayer);
@@ -42,7 +42,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
 
             if (!this.checkMovement) {
                 d0 = packet10flying.y - this.z;
-                if (packet10flying.x == this.y && d0 * d0 < 0.01D && packet10flying.z == this.q) {
+                if (packet10flying.x == this.y && d0 * d0 < 0.01D && packet10flying.z == this.p) {
                     this.checkMovement = true;
                 }
             }
@@ -109,7 +109,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
                     float f = this.player.yaw;
                     float f1 = this.player.pitch;
 
-                    this.player.vehicle.V();
+                    this.player.vehicle.U();
                     d1 = this.player.locX;
                     d2 = this.player.locY;
                     d3 = this.player.locZ;
@@ -143,20 +143,20 @@ public class NoClipPlayerConnection extends PlayerConnection {
                     }
 
                     if (this.player.vehicle != null) {
-                        this.player.vehicle.V();
+                        this.player.vehicle.U();
                     }
 
                     this.minecraftServer.getPlayerList().d(this.player);
                     this.y = this.player.locX;
                     this.z = this.player.locY;
-                    this.q = this.player.locZ;
+                    this.p = this.player.locZ;
                     worldserver.playerJoinedWorld(this.player);
                     return;
                 }
 
                 if (this.player.isSleeping()) {
                     this.player.g();
-                    this.player.setLocation(this.y, this.z, this.q, this.player.yaw, this.player.pitch);
+                    this.player.setLocation(this.y, this.z, this.p, this.player.yaw, this.player.pitch);
                     worldserver.playerJoinedWorld(this.player);
                     return;
                 }
@@ -164,7 +164,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
                 d0 = this.player.locY;
                 this.y = this.player.locX;
                 this.z = this.player.locY;
-                this.q = this.player.locZ;
+                this.p = this.player.locZ;
                 d1 = this.player.locX;
                 d2 = this.player.locY;
                 d3 = this.player.locZ;
@@ -182,12 +182,12 @@ public class NoClipPlayerConnection extends PlayerConnection {
                     d4 = packet10flying.stance - packet10flying.y;
                     if (!this.player.isSleeping() && (d4 > 1.65D || d4 < 0.1D)) {
                         this.disconnect("Illegal stance");
-                        logger.warning(this.player.name + " had an illegal stance: " + d4);
+                        this.minecraftServer.getLogger().warning(this.player.name + " had an illegal stance: " + d4);
                         return;
                     }
 
                     if (Math.abs(packet10flying.x) > 3.2E7D || Math.abs(packet10flying.z) > 3.2E7D) {
-                        this.a(this.y, this.z, this.q, this.player.yaw, this.player.pitch);
+                        this.a(this.y, this.z, this.p, this.player.yaw, this.player.pitch);
                         return;
                     }
                 }
@@ -198,8 +198,8 @@ public class NoClipPlayerConnection extends PlayerConnection {
                 }
 
                 this.player.g();
-                this.player.W = 0.0F;
-                this.player.setLocation(this.y, this.z, this.q, f2, f3);
+                this.player.X = 0.0F;
+                this.player.setLocation(this.y, this.z, this.p, f2, f3);
                 if (!this.checkMovement) {
                     return;
                 }

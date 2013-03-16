@@ -1,10 +1,10 @@
 package net.md_5.noclip;
 
-import net.minecraft.server.v1_4_6.EntityPlayer;
-import net.minecraft.server.v1_4_6.PlayerConnection;
+import net.minecraft.server.v1_5_R1.EntityPlayer;
+import net.minecraft.server.v1_5_R1.PlayerConnection;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_4_6.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_5_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -64,7 +64,7 @@ public class NoClip extends JavaPlugin implements Listener {
         if (entity != null) {
             EntityDamageEvent lastCause = entity.getLastDamageCause();
             if (lastCause != null) {
-                if (lastCause.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().Y) {
+                if (lastCause.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION && entity instanceof CraftPlayer && ((CraftPlayer) entity).getHandle().Z) {
                     event.setCancelled(true);
                 }
             }
