@@ -1,10 +1,10 @@
 package net.md_5.noclip;
 
-import net.minecraft.server.v1_5_R3.EntityPlayer;
-import net.minecraft.server.v1_5_R3.PlayerConnection;
+import net.minecraft.server.v1_6_R2.EntityPlayer;
+import net.minecraft.server.v1_6_R2.PlayerConnection;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_6_R2.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -39,7 +39,7 @@ public class NoClip extends JavaPlugin implements Listener {
         player.playerConnection.disconnected = true;
         PlayerConnection handler = new NoClipPlayerConnection(player.server, player.playerConnection.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        player.server.ae().a(handler);
+        player.server.ag().a(handler);
     }
 
     private void disableNoClip(EntityPlayer player) {
@@ -47,7 +47,7 @@ public class NoClip extends JavaPlugin implements Listener {
         player.playerConnection.disconnected = true;
         PlayerConnection handler = new PlayerConnection(player.server, player.playerConnection.networkManager, player);
         handler.a(player.locX, player.locY, player.locZ, player.yaw, player.pitch);
-        player.server.ae().a(handler);
+        player.server.ag().a(handler);
     }
 
     @EventHandler

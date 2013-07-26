@@ -1,14 +1,14 @@
 package net.md_5.noclip;
 
-import net.minecraft.server.v1_5_R3.EntityPlayer;
-import net.minecraft.server.v1_5_R3.INetworkManager;
-import net.minecraft.server.v1_5_R3.MinecraftServer;
-import net.minecraft.server.v1_5_R3.Packet10Flying;
-import net.minecraft.server.v1_5_R3.Packet13PlayerLookMove;
-import net.minecraft.server.v1_5_R3.PlayerConnection;
-import net.minecraft.server.v1_5_R3.WorldServer;
+import net.minecraft.server.v1_6_R2.EntityPlayer;
+import net.minecraft.server.v1_6_R2.INetworkManager;
+import net.minecraft.server.v1_6_R2.MinecraftServer;
+import net.minecraft.server.v1_6_R2.Packet10Flying;
+import net.minecraft.server.v1_6_R2.Packet13PlayerLookMove;
+import net.minecraft.server.v1_6_R2.PlayerConnection;
+import net.minecraft.server.v1_6_R2.WorldServer;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_5_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_6_R2.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -109,7 +109,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
                     float f = this.player.yaw;
                     float f1 = this.player.pitch;
 
-                    this.player.vehicle.U();
+                    this.player.vehicle.V();
                     d1 = this.player.locX;
                     d2 = this.player.locY;
                     d3 = this.player.locZ;
@@ -123,7 +123,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
 
                     if (packet10flying.hasPos && packet10flying.y == -999.0D && packet10flying.stance == -999.0D) {
                         if (Math.abs(packet10flying.x) > 1.0D || Math.abs(packet10flying.z) > 1.0D) {
-                            System.err.println(this.player.name + " was caught trying to crash the server with an invalid position.");
+                            System.err.println(this.player.getName() + " was caught trying to crash the server with an invalid position.");
                             this.disconnect("Nope!");
                             return;
                         }
@@ -133,17 +133,11 @@ public class NoClipPlayerConnection extends PlayerConnection {
                     }
 
                     this.player.onGround = packet10flying.g;
-                    this.player.g();
-                    this.player.move(d5, 0.0D, d4);
+                    this.player.h();
+                    this.player.X = 0.0F;
                     this.player.setLocation(d1, d2, d3, f, f1);
-                    this.player.motX = d5;
-                    this.player.motZ = d4;
                     if (this.player.vehicle != null) {
-                        worldserver.vehicleEnteredWorld(this.player.vehicle, true);
-                    }
-
-                    if (this.player.vehicle != null) {
-                        this.player.vehicle.U();
+                        this.player.vehicle.V();
                     }
 
                     this.minecraftServer.getPlayerList().d(this.player);
@@ -155,7 +149,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
                 }
 
                 if (this.player.isSleeping()) {
-                    this.player.g();
+                    this.player.h();
                     this.player.setLocation(this.y, this.z, this.p, this.player.yaw, this.player.pitch);
                     worldserver.playerJoinedWorld(this.player);
                     return;
@@ -182,7 +176,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
                     d4 = packet10flying.stance - packet10flying.y;
                     if (!this.player.isSleeping() && (d4 > 1.65D || d4 < 0.1D)) {
                         this.disconnect("Illegal stance");
-                        this.minecraftServer.getLogger().warning(this.player.name + " had an illegal stance: " + d4);
+                        this.minecraftServer.getLogger().warning(this.player.getName() + " had an illegal stance: " + d4);
                         return;
                     }
 
@@ -197,7 +191,7 @@ public class NoClipPlayerConnection extends PlayerConnection {
                     f3 = packet10flying.pitch;
                 }
 
-                this.player.g();
+                this.player.h();
                 this.player.X = 0.0F;
                 this.player.setLocation(this.y, this.z, this.p, f2, f3);
                 if (!this.checkMovement) {
@@ -205,16 +199,16 @@ public class NoClipPlayerConnection extends PlayerConnection {
                 }
 
                 d4 = d1 - this.player.locX;
-                double d6 = d2 - this.player.locY;
-                double d7 = d3 - this.player.locZ;
+                double d5 = d2 - this.player.locY;
+                double d6 = d3 - this.player.locZ;
 
-                if (this.player.onGround && !packet10flying.g && d6 > 0.0D) {
-                    this.player.j(0.2F);
+                if (this.player.onGround && !packet10flying.g && d5 > 0.0D) {
+                    this.player.a(0.2F);
                 }
 
-                this.player.move(d4, d6, d7);
+                this.player.move(d4, d5, d6);
                 this.player.onGround = packet10flying.g;
-                this.player.checkMovement(d4, d6, d7);
+                this.player.checkMovement(d4, d5, d6);
 
                 this.player.setLocation(d1, d2, d3, f2, f3);
 
